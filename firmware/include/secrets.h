@@ -1,0 +1,1 @@
+// Store Wi-Fi and MQTT credentials here (keep out of version control!)

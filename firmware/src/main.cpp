@@ -1,0 +1,1 @@
+// The main loop: reads sensors, triggers LEDs/Fan, sends MQTT
