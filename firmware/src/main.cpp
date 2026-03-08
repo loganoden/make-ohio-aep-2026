@@ -86,6 +86,7 @@ void loop() {
     lastMsg = now;
 
     float tempC = getTemperature();
+    float voltage = getVoltage();
     int lightLevel = getLightLevel();
     float hazard = calculateHazardLevel(tempC);
 
@@ -93,6 +94,7 @@ void loop() {
 
     JsonDocument doc;
     doc["temperature_c"] = tempC;
+    doc["voltage"] = voltage;
     doc["light_level"] = lightLevel;
     doc["hazard_level"] = hazard;
     doc["wind_pwm"] = currentFanSpeed;
