@@ -2,6 +2,7 @@
 #include <math.h>
 
 const int THERMISTOR_PIN = 34; // ADC1_CH6
+const int VOLT_PIN = 23;
 const int LDR_PIN = 35; // ADC1_CH7 on ESP32 dev module
 
 const float SERIES_RESISTOR = 10000.0;
@@ -28,6 +29,14 @@ float getTemperature() {
   steinhart -= 273.15; 
   
   return steinhart;
+}
+
+float getVoltage() {
+  int adcValue = analogRead(VOLT_PIN);
+  if (adcValue <= 0.0 || adcValue >= 4095.0) return 0.0;
+
+  float voltage = ((adcValue / 4095.0) * 3.3) * 4.0;
+  return voltage;
 }
 
 int getLightLevel() {
