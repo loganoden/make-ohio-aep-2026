@@ -88,7 +88,7 @@ void loop() {
     float tempC = getTemperature();
     float voltage = getVoltage();
     int lightLevel = getLightLevel();
-    float hazard = calculateHazardLevel(tempC);
+    float hazard = calculateHazardLevel(tempC, voltage);
 
     updateActuators(hazard);
 
