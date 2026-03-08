@@ -27,12 +27,16 @@ void updateWindSimulation() {
   }
 }
 
-float calculateHazardLevel(float temp) {
-  float hazard = 0;
+float calculateHazardLevel(float temp, float volt) {
+  float hazard = 0.0;
   float tempHazard = (temp - 30.0) / (80.0 - 30.0);
-  float voltHazard = (temp / 100) + 0.5;
-  if (tempHazard < 0.0 || voltHazard < 10) hazard = 0.0;
-  if (tempHazard > 1.0 || voltHazard > 12) hazard = 1.0;
+  float voltHazard = (volt - 10.0) / (12.0 - 10.0);
+  if (tempHazard < 0.0) tempHazard = 0.0;
+  if (tempHazard > 1.0) tempHazard = 1.0;
+  if (voltHazard < 0.0) voltHazard = 0.0;
+  if (voltHazard > 1.0) voltHazard = 1.0;
+
+  hazard = tempHazard > voltHazard ? tempHazard : voltHazard;
   return hazard;
 }
 
