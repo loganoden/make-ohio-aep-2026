@@ -7,6 +7,7 @@
 
 void initSensors();
 float getTemperature();
+float getVoltage();
 int getLightLevel();
 
 #endif
